@@ -1,0 +1,177 @@
+/* ---------------------------
+   GLOBAL PAGE STYLING
+---------------------------- */
+
+body {
+  background: #05070A;
+  color: white;
+}
+
+.portfolio-section {
+  padding: 60px;
+  text-align: center;
+}
+
+.portfolio-title {
+  font-size: 42px;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+/* Label under "Our Work" */
+.portfolio-note {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  color: #2DFF8C;
+  text-shadow: 0 0 12px rgba(45,255,140,0.7);
+  margin-bottom: 40px;
+}
+
+
+/* ---------------------------
+   MASONRY GALLERY (PREMIUM)
+---------------------------- */
+
+.masonry-gallery {
+  column-count:3;       /* 3 columns desktop */
+  column-gap: 22px;
+  margin-top: 30px;
+}
+
+.masonry-item {
+  break-inside: avoid;    /* prevents breaking */
+  margin-bottom: 22px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #111;
+  box-shadow: 0 0 15px rgba(45,255,140,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+/* Size classes (you may adjust) */
+.masonry-item.tall {
+  height: 900px;
+}
+
+.masonry-item.wide {
+  height: 400px;
+}
+
+/* Auto sizing classes */
+.masonry-item.vertical {
+  height: 1000px; /* for 9:16 or tall videos/images */
+}
+
+.masonry-item.horizontal {
+  height: 350px; /* for landscape videos/images */
+}
+
+/* Ensure media fits neatly */
+.masonry-item video,
+.masonry-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Play / mute button styles (re-add) */
+.play-btn, .sound-btn {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  background: rgba(0,0,0,0.6);
+  border: 1px solid rgba(255,255,255,0.4);
+  color: white;
+  font-size: 22px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 20;
+}
+
+.play-btn {
+  right: 60px; /* so play + mute both appear */
+}
+
+/* Premium hover effect */
+.masonry-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 30px rgba(45,255,140,0.35);
+}
+
+
+/* ---------------------------
+   SOUND BUTTON (if used)
+---------------------------- */
+
+.v-item {
+  position: relative;
+}
+
+.sound-btn {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  background: rgba(0,0,0,0.6);
+  border: 1px solid rgba(255,255,255,0.4);
+  color: white;
+  font-size: 22px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+
+/* ---------------------------
+   RESPONSIVE STYLES
+---------------------------- */
+
+@media (max-width: 1100px) {
+  .masonry-gallery {
+    column-count: 2;   /* 2 columns on tablets */
+  }
+}
+
+@media (max-width: 600px) {
+  .masonry-gallery {
+    column-count: 1;   /* 1 column on mobile */
+  }
+
+  .portfolio-title {
+    font-size: 32px;
+  }
+
+  .portfolio-note {
+    font-size: 18px;
+  }
+}
+/* ===== VIDEO CARDS (MASONRY SAFE) ===== */
+
+.video-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.video-card iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Ensure images still behave */
+.masonry-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 20px;
+}
