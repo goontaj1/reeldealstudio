@@ -69,12 +69,18 @@ body {
 }
 
 /* Ensure media fits neatly */
-.masonry-item video,
-.masonry-item img {
+.masonry-item video
+{
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+}
+.masonry-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain; /* IMPORTANT */
 }
 
 /* Play / mute button styles (re-add) */

@@ -13,3 +13,4 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", reveal);
   reveal();
 });
+
