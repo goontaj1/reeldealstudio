@@ -823,3 +823,208 @@ footer {
   transform: scale(1.15);
 }
 
+/* =========================
+   MOBILE NAVBAR
+========================= */
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.hamburger span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: white;
+  margin: 6px 0;
+  transition: 0.3s ease;
+}
+
+/* MOBILE MENU */
+@media (max-width: 900px) {
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 72px;
+    left: 0;
+    width: 100%;
+    background: rgba(5,7,10,0.95);
+    backdrop-filter: blur(12px);
+
+    flex-direction: column;
+    align-items: center;
+    gap: 26px;
+
+    padding: 30px 0;
+
+    transform: translateY(-120%);
+    opacity: 0;
+    pointer-events: none;
+
+    transition: all 0.35s ease;
+  }
+
+  .nav-links.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-links a {
+    font-size: 18px;
+  }
+
+  .nav-links .cta {
+    width: 80%;
+    text-align: center;
+  }
+}
+
+/* =========================
+   MOBILE OPTIMISATION
+========================= */
+
+@media (max-width: 768px) {
+
+  /* ---------- HERO ---------- */
+
+  .hero {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .hero-content {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    padding: 140px 24px 80px;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .hero-content h1 {
+    font-size: 38px;
+    line-height: 1.15;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-top: 16px;
+  }
+
+  /* Buttons stack */
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 28px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    text-align: center;
+    padding: 14px 0;
+  }
+
+  /* Badges wrap nicely */
+  .badge-row {
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .badge {
+    font-size: 13px;
+    padding: 6px 14px;
+  }
+
+  /* ---------- SECTIONS ---------- */
+
+  .section {
+    padding: 70px 24px;
+  }
+
+  .center-title {
+    font-size: 30px;
+  }
+
+  .center-sub {
+    font-size: 16px;
+    margin-bottom: 32px;
+  }
+
+  /* ---------- CARDS ---------- */
+
+  .cards {
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 420px;
+  }
+
+  /* Remove hover movement on mobile */
+  .card:hover,
+  .cta-card:hover,
+  .step-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* ---------- PROCESS ---------- */
+
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .steps-title {
+    font-size: 32px;
+  }
+
+  /* ---------- CTA ---------- */
+
+  .cta-section {
+    padding: 80px 24px;
+  }
+
+  .cta-section h2 {
+    font-size: 30px;
+    line-height: 1.2;
+  }
+
+  .cta-section .btn-primary.big {
+    width: 100%;
+    padding: 16px 0;
+    margin-top: 28px;
+  }
+
+  /* ---------- FOOTER ---------- */
+
+  .footer-grid {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .footer-bottom {
+    font-size: 13px;
+  }
+}
