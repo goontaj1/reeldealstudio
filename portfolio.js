@@ -1,19 +1,66 @@
-let currentReel = 0;
+document.querySelectorAll(".masonry-item").forEach(item => {
+  
+  const video = item.querySelector("video");
+  const img = item.querySelector("img");
+  const playBtn = item.querySelector(".play-btn");
+  const soundBtn = item.querySelector(".sound-btn");
 
-function scrollReels(direction) {
-  const track = document.querySelector(".reels-track");
-  const reels = document.querySelectorAll(".reel-card");
+  /* ---------- 1. AUTO DETECT MEDIA ORIENTATION ---------- */
 
-  if (!track || reels.length === 0) return;
+  // For videos
+  if (video) {
+    video.addEventListener("loadedmetadata", () => {
+      const { videoWidth, videoHeight } = video;
 
-  currentReel += direction;
+      if (videoHeight > videoWidth) {
+        item.classList.add("vertical");
+      } else {
+        item.classList.add("horizontal");
+      }
+    });
+  }
 
-  if (currentReel < 0) currentReel = 0;
-  if (currentReel >= reels.length) currentReel = reels.length - 1;
+  // For images
+  if (img) {
+    img.onload = () => {
+      const { naturalWidth, naturalHeight } = img;
 
-  const reelWidth = reels[0].offsetWidth;
-  const gap = 60; // must match CSS gap
-  const offset = currentReel * (reelWidth + gap);
+      if (naturalHeight > naturalWidth) {
+        item.classList.add("vertical");
+      } else {
+        item.classList.add("horizontal");
+      }
+    };
+  }
 
-  track.style.transform = `translateX(-${offset}px)`;
-}
+  /* ---------- 2. PLAY / PAUSE BUTTON ---------- */
+
+  if (playBtn && video) {
+    playBtn.addEventListener("click", () => {
+      if (video.paused) {
+        video.play();
+        playBtn.textContent = "⏸️";
+      } else {
+        video.pause();
+        playBtn.textContent = "▶️";
+      }
+    });
+  }
+
+  /* ---------- 3. MUTE / UNMUTE BUTTON ---------- */
+
+  if (soundBtn && video) {
+    video.muted = true; // start muted
+
+    soundBtn.addEventListener("click", () => {
+      video.muted = !video.muted;
+
+      soundBtn.textContent = video.muted ? "🔇" : "🔊";
+
+      if (!video.paused && !video.muted) {
+        video.play();
+      }
+    });
+  }
+
+});
