@@ -1,183 +1,162 @@
-/* ---------------------------
-   GLOBAL PAGE STYLING
----------------------------- */
-
-body {
-  background: #05070A;
-  color: white;
-}
+/* =====================
+   PORTFOLIO BASE
+===================== */
 
 .portfolio-section {
-  padding: 60px;
-  text-align: center;
+  padding: 80px 40px;
 }
 
 .portfolio-title {
   font-size: 42px;
   font-weight: 900;
-  margin-bottom: 10px;
+  text-align: center;
+  margin-bottom: 60px;
 }
 
-/* Label under "Our Work" */
-.portfolio-note {
-  display: block;
-  font-size: 20px;
-  font-weight: 700;
-  color: #2DFF8C;
-  text-shadow: 0 0 12px rgba(45,255,140,0.7);
-  margin-bottom: 40px;
+/* =====================
+   BLOCKS
+===================== */
+
+.portfolio-block {
+  margin-bottom: 90px;
 }
 
-
-/* ---------------------------
-   MASONRY GALLERY (PREMIUM)
----------------------------- */
-
-.masonry-gallery {
-  column-count:3;       /* 3 columns desktop */
-  column-gap: 22px;
-  margin-top: 30px;
+.portfolio-block h2 {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 20px;
 }
 
-.masonry-item {
-  break-inside: avoid;    /* prevents breaking */
-  margin-bottom: 22px;
-  border-radius: 20px;
+/* =====================
+   REELS (NETFLIX STYLE)
+===================== */
+
+/* =====================
+   SINGLE-REEL SLIDER
+===================== */
+
+
+.reels-slider.single {
+  position: relative;   /* 🔥 THIS IS THE KEY */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
-  background: #111;
-  box-shadow: 0 0 15px rgba(45,255,140,0.15);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
+
+  height: 760px;
 }
 
-/* Size classes (you may adjust) */
-.masonry-item.tall {
-  height: 900px;
-}
+/* Desktop: constrain size */
+.reel-card {
+  flex: 0 0 auto;
+  width: 420px;             /* desktop phone-size */
+  max-width: 90vw;
 
-.masonry-item.wide {
-  height: 400px;
-}
-
-/* Auto sizing classes */
-.masonry-item.vertical {
-  height: 1000px; /* for 9:16 or tall videos/images */
-}
-
-.masonry-item.horizontal {
-  height: 350px; /* for landscape videos/images */
-}
-
-/* Ensure media fits neatly */
-.masonry-item video
-{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.masonry-item img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: contain; /* IMPORTANT */
-}
-
-/* Play / mute button styles (re-add) */
-.play-btn, .sound-btn {
-  position: absolute;
-  bottom: 16px;
-  right: 16px;
-  background: rgba(0,0,0,0.6);
-  border: 1px solid rgba(255,255,255,0.4);
-  color: white;
-  font-size: 22px;
-  padding: 8px 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  z-index: 20;
-}
-
-.play-btn {
-  right: 60px; /* so play + mute both appear */
-}
-
-/* Premium hover effect */
-.masonry-item:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 30px rgba(45,255,140,0.35);
-}
-
-
-/* ---------------------------
-   SOUND BUTTON (if used)
----------------------------- */
-
-.v-item {
-  position: relative;
-}
-
-.sound-btn {
-  position: absolute;
-  bottom: 16px;
-  right: 16px;
-  background: rgba(0,0,0,0.6);
-  border: 1px solid rgba(255,255,255,0.4);
-  color: white;
-  font-size: 22px;
-  padding: 8px 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  z-index: 10;
-}
-
-
-/* ---------------------------
-   RESPONSIVE STYLES
----------------------------- */
-
-@media (max-width: 1100px) {
-  .masonry-gallery {
-    column-count: 2;   /* 2 columns on tablets */
-  }
-}
-
-@media (max-width: 600px) {
-  .masonry-gallery {
-    column-count: 1;   /* 1 column on mobile */
-  }
-
-  .portfolio-title {
-    font-size: 32px;
-  }
-
-  .portfolio-note {
-    font-size: 18px;
-  }
-}
-/* ===== VIDEO CARDS (MASONRY SAFE) ===== */
-
-.video-card {
-  position: relative;
-  width: 100%;
-  height: 100%;
+  aspect-ratio: 9 / 16;
   background: #000;
+  border-radius: 18px;
   overflow: hidden;
-  border-radius: 20px;
-}
 
-.video-card iframe {
-  position: absolute;
-  inset: 0;
+  box-shadow: 0 0 35px rgba(0,0,0,0.6);
+}
+.reel-card iframe {
   width: 100%;
   height: 100%;
   border: none;
 }
 
-/* Ensure images still behave */
-.masonry-item img {
+/* Mobile: full width */
+@media (max-width: 768px) {
+  .reel-card {
+    max-width: 100%;
+    border-radius: 0;
+  }
+}
+/* =====================
+   NETFLIX STYLE ARROWS
+===================== */
+
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: none;
+
+  background: rgba(0,0,0,0.7);
+  color: white;
+  font-size: 32px;
+  font-weight: 700;
+
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: all 0.25s ease;
+  backdrop-filter: blur(10px);
+}
+
+.slider-arrow:hover {
+  background: #2DFF8C;
+  color: #000;
+  box-shadow: 0 0 25px rgba(45,255,140,0.8);
+  transform: translateY(-50%) scale(1.15);
+}
+
+.slider-arrow.left {
+  left: 24px;
+}
+
+.slider-arrow.right {
+  right: 24px;
+}
+
+
+/* Hide arrows on mobile (swipe instead) */
+@media (max-width: 768px) {
+  .slider-arrow {
+    display: none;
+  }
+}
+
+/* =====================
+   WEBSITES GRID
+===================== */
+
+.websites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.website-card {
+  border-radius: 18px;
+  overflow: hidden;
+  background: #0F1215;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+.website-card img {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 20px;
+}
+
+/* =====================
+   MOBILE
+===================== */
+
+@media (max-width: 768px) {
+  .slider-controls {
+    display: none; /* swipe instead */
+  }
+
+  .portfolio-title {
+    font-size: 32px;
+  }
 }

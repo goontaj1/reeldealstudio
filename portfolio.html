@@ -36,41 +36,54 @@
 <section class="portfolio-section">
   <h1 class="portfolio-title">Our Work</h1>
 
-  <div class="masonry-gallery">
+  <!-- =====================
+       REELS SECTION
+  ====================== -->
+  <section class="portfolio-block">
+  <h2>Reels</h2>
 
-    <!-- VIDEO 1 -->
-    <div class="masonry-item vertical">
-  <div class="video-card">
-    <iframe 
-  src="https://player.vimeo.com/video/1147522196?controls=1&autoplay=0"
-  allow="autoplay; fullscreen; picture-in-picture"
-  allowfullscreen>
-  </iframe>
-  </div>
-</div>
-    <!-- IMAGE -->
-    <div class="masonry-item">
-      <img src="assets/website1.png" alt="">
+  <div class="reels-slider single">
+
+    <button class="slider-arrow left" onclick="scrollReels(-1)">‹</button>
+
+    <div class="reel-card">
+      <iframe
+        src="https://player.vimeo.com/video/1147522196?controls=1"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen>
+      </iframe>
     </div>
 
-    <!-- IMAGE -->
-    <div class="masonry-item">
-      <img src="assets/website2.png" alt="">
+    <div class="reel-card">
+      <iframe
+        src="https://player.vimeo.com/video/1147527407?controls=1"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen>
+      </iframe>
     </div>
 
-    <!-- VIDEO 2 -->
-    <div class="masonry-item vertical">
-  <div class="video-card">
-    <iframe 
-  src="https://player.vimeo.com/video/1147527407?controls=1&autoplay=0"
-  allow="autoplay; fullscreen; picture-in-picture"
-  allowfullscreen>
-  </iframe>
-  </div>
-</div>
+    <button class="slider-arrow right" onclick="scrollReels(1)">›</button>
 
   </div>
 </section>
+  <!-- =====================
+       WEBSITES SECTION
+  ====================== -->
+  <div class="portfolio-block">
+    <h2>Websites</h2>
+
+    <div class="websites-grid">
+      <div class="website-card">
+        <img src="assets/website1.png" alt="Website project 1">
+      </div>
+
+      <div class="website-card">
+        <img src="assets/website2.png" alt="Website project 2">
+      </div>
+    </div>
+  </div>
+</section>
+
 
   <footer>
 

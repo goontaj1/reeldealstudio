@@ -1,66 +1,14 @@
-document.querySelectorAll(".masonry-item").forEach(item => {
-  
-  const video = item.querySelector("video");
-  const img = item.querySelector("img");
-  const playBtn = item.querySelector(".play-btn");
-  const soundBtn = item.querySelector(".sound-btn");
+let currentReel = 0;
 
-  /* ---------- 1. AUTO DETECT MEDIA ORIENTATION ---------- */
+function scrollReels(direction) {
+  const reels = document.querySelectorAll(".reel-card");
+  currentReel += direction;
 
-  // For videos
-  if (video) {
-    video.addEventListener("loadedmetadata", () => {
-      const { videoWidth, videoHeight } = video;
+  if (currentReel < 0) currentReel = 0;
+  if (currentReel >= reels.length) currentReel = reels.length - 1;
 
-      if (videoHeight > videoWidth) {
-        item.classList.add("vertical");
-      } else {
-        item.classList.add("horizontal");
-      }
-    });
-  }
-
-  // For images
-  if (img) {
-    img.onload = () => {
-      const { naturalWidth, naturalHeight } = img;
-
-      if (naturalHeight > naturalWidth) {
-        item.classList.add("vertical");
-      } else {
-        item.classList.add("horizontal");
-      }
-    };
-  }
-
-  /* ---------- 2. PLAY / PAUSE BUTTON ---------- */
-
-  if (playBtn && video) {
-    playBtn.addEventListener("click", () => {
-      if (video.paused) {
-        video.play();
-        playBtn.textContent = "⏸️";
-      } else {
-        video.pause();
-        playBtn.textContent = "▶️";
-      }
-    });
-  }
-
-  /* ---------- 3. MUTE / UNMUTE BUTTON ---------- */
-
-  if (soundBtn && video) {
-    video.muted = true; // start muted
-
-    soundBtn.addEventListener("click", () => {
-      video.muted = !video.muted;
-
-      soundBtn.textContent = video.muted ? "🔇" : "🔊";
-
-      if (!video.paused && !video.muted) {
-        video.play();
-      }
-    });
-  }
-
-});
+  reels[currentReel].scrollIntoView({
+    behavior: "smooth",
+    inline: "center"
+  });
+}
