@@ -1,55 +1,30 @@
 /* =====================
-   PORTFOLIO BASE
-===================== */
-
-.portfolio-section {
-  padding: 80px 40px;
-}
-
-.portfolio-title {
-  font-size: 42px;
-  font-weight: 900;
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-/* =====================
-   BLOCKS
-===================== */
-
-.portfolio-block {
-  margin-bottom: 90px;
-}
-
-.portfolio-block h2 {
-  font-size: 28px;
-  font-weight: 800;
-  margin-bottom: 20px;
-}
-
-/* =====================
    REELS (NETFLIX STYLE)
 ===================== */
 
-/* =====================
-   SINGLE-REEL SLIDER
-===================== */
-
-
 .reels-slider.single {
-  position: relative;   /* 🔥 THIS IS THE KEY */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-
+  position: relative;
+  width: 100%;
   height: 760px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
 }
 
-/* Desktop: constrain size */
+/* TRACK (THIS WAS MISSING 🔥) */
+.reels-track {
+  display: flex;
+  gap: 60px;
+  transition: transform 0.5s ease;
+  will-change: transform;
+}
+
+/* Reel card */
 .reel-card {
-  flex: 0 0 auto;
-  width: 420px;             /* desktop phone-size */
+  flex: 0 0 420px;
   max-width: 90vw;
 
   aspect-ratio: 9 / 16;
@@ -59,28 +34,22 @@
 
   box-shadow: 0 0 35px rgba(0,0,0,0.6);
 }
+
 .reel-card iframe {
   width: 100%;
   height: 100%;
   border: none;
 }
 
-/* Mobile: full width */
-@media (max-width: 768px) {
-  .reel-card {
-    max-width: 100%;
-    border-radius: 0;
-  }
-}
 /* =====================
-   NETFLIX STYLE ARROWS
+   ARROWS (NETFLIX STYLE)
 ===================== */
 
 .slider-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 50;
+  z-index: 100;
 
   width: 64px;
   height: 64px;
@@ -97,8 +66,8 @@
   align-items: center;
   justify-content: center;
 
-  transition: all 0.25s ease;
   backdrop-filter: blur(10px);
+  transition: all 0.25s ease;
 }
 
 .slider-arrow:hover {
@@ -116,47 +85,22 @@
   right: 24px;
 }
 
-
-/* Hide arrows on mobile (swipe instead) */
+/* Mobile */
 @media (max-width: 768px) {
+  .reels-slider.single {
+    height: auto;
+  }
+
+  .reels-track {
+    gap: 20px;
+  }
+
+  .reel-card {
+    flex: 0 0 100%;
+    border-radius: 0;
+  }
+
   .slider-arrow {
     display: none;
-  }
-}
-
-/* =====================
-   WEBSITES GRID
-===================== */
-
-.websites-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-}
-
-.website-card {
-  border-radius: 18px;
-  overflow: hidden;
-  background: #0F1215;
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
-}
-
-.website-card img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* =====================
-   MOBILE
-===================== */
-
-@media (max-width: 768px) {
-  .slider-controls {
-    display: none; /* swipe instead */
-  }
-
-  .portfolio-title {
-    font-size: 32px;
   }
 }
